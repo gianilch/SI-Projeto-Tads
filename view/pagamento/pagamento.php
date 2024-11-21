@@ -1,25 +1,23 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $paymentType = isset($_POST['paymentTypeRadioOptions']) ? $_POST['paymentTypeRadioOptions'] : '';
-}
+$paymentType = isset($_GET['paymentType']) ? $_GET['paymentType'] : '';
 ?>
 <div class="container mt-5">
     <h2>Formas de Pagamento</h2>
-    <form action="" method="POST">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="paymentTypeRadioOptions" id="radioPix" value="pix" <?php if (isset($paymentType) && $paymentType == 'pix') echo 'checked'; ?> onchange="this.form.submit()">
-            <label class="form-check-label" for="radioPix">PIX</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="paymentTypeRadioOptions" id="radioCartao" value="cartao" <?php if (isset($paymentType) && $paymentType == 'cartao') echo 'checked'; ?> onchange="this.form.submit()">
-            <label class="form-check-label" for="radioCartao">Cartão</label>
-        </div>
-    </form>
+    <div class="form-check form-check-inline">
+        <a href="?paymentType=pix" class="btn btn-outline-primary <?php if ($paymentType == 'pix') echo 'active'; ?>">
+            PIX
+        </a>
+    </div>
+    <div class="form-check form-check-inline">
+        <a href="?paymentType=cartao" class="btn btn-outline-primary <?php if ($paymentType == 'cartao') echo 'active'; ?>">
+            Cartão
+        </a>
+    </div>
 
     <?php
-    if (isset($paymentType) && $paymentType == 'pix') {
+    if ($paymentType == 'pix') {
         include 'pix.php';
-    } elseif (isset($paymentType) && $paymentType == 'cartao') {
+    } elseif ($paymentType == 'cartao') {
         include 'cartao.php';
     }
     ?>
