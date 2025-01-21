@@ -2,7 +2,7 @@
 
     <h2>Formas de Pagamento</h2>
     <div class="mb-3">
-        <a href="formas_pagamento.php?page=novo" class="btn btn-primary"> Adicionar Forma de Pagamento</a>
+        <a href="forma_pagamento.php?page=novo" class="btn btn-primary"> Adicionar Forma de Pagamento</a>
     </div>
 
     <?php

@@ -51,7 +51,7 @@
             Financeiro
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownFinanceiro">
-            <a class="dropdown-item" href="../controller/formas_pagamento.php?page=listar">Formas de Pagamento</a>
+            <a class="dropdown-item" href="../controller/forma_pagamento.php?page=listar">Formas de Pagamento</a>
             <a class="dropdown-item" href="../controller/pagamento.php">Pagamento</a>
             <a class="dropdown-item" href="#">Contas a Receber</a>
             <a class="dropdown-item" href="#">Contas a Pagar</a>

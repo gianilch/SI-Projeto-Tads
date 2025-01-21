@@ -1,12 +1,12 @@
 <?php
 
 include("../model/banco.php");
-include("../model/formas_pagamento.php");
+include("../model/forma_pagamento.php");
 include("../view/template.php");
 
 switch (@$_REQUEST["page"]) {
   case "listar":
-    include("../view/pagamento/formas_pagamento.php");
+    include("../view/pagamento/forma_pagamento.php");
     break;
   case "novo":
     include("../view/pagamento/cadastrar_forma_pagamento.php");
