@@ -6,7 +6,7 @@ include("../view/template.php");
 
 switch (@$_REQUEST["page"]) {
   case "listar":
-    include("../view/pagamento/forma_pagamento.php");
+    include("../view/pagamento/listar_forma_pagamento.php");
     break;
   case "novo":
     include("../view/pagamento/cadastrar_forma_pagamento.php");
@@ -24,6 +24,15 @@ switch (@$_REQUEST["page"]) {
     } else {
       echo "<script>alert('Não foi possível " . ($id ? "atualizar" : "cadastrar") . " a forma de pagamento.'); </script>";
 
+    }
+    echo "<script>location.href='?page=listar';</script>";
+    break;
+  case "excluir":
+    $id = intval($_REQUEST['id']);
+    if (excluirFormaPagamento($conexao, $id)) {
+      echo "<script>alert('Forma de pagamento excluída com sucesso.'); </script>";
+    } else {
+      echo "<script>alert('Não foi possível excluir essa forma de pagamento.'); </script>";
     }
     echo "<script>location.href='?page=listar';</script>";
     break;
