@@ -21,6 +21,7 @@
         print "<th>Aceita Parcelamento</th>";
         print "<th>Prazo da Parcela</th>";
         print "<th>Juros</th>";
+        print "<th>Ações</th>";
         print "</tr";
         print "</thead>";
         print "<tbody>";
@@ -33,6 +34,9 @@
             print "<td>" . ($row->aceita_parcelamento == 1 ? 'Sim' : 'Não') . "</td>";
             print "<td>" . $row->prazo_parcela . "</td>";
             print "<td>" . $row->juros . "</td>";
+            print "<td>";
+            print "<button onclick=\"if(confirm('Tem certeza que deseja excluir esta forma de pagamento?'))
+                {location.href='?page=excluir&id=" . $row->id_pagamento . "';}\" class='btn btn-danger'>Excluir</button>";
         }
         print "</tbody>";
         print "</table>";

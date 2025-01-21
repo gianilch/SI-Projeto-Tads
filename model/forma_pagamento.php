@@ -18,7 +18,7 @@ function salvarFormaPagamento($conexao, $nome, $tipo, $aceita_parcelamento, $pra
 
 function excluirFormaPagamento($conexao, $id)
 {
-  $sql = "DELETE FROM forma_pagamento WHERE id = ?";
+  $sql = "DELETE FROM forma_pagamento WHERE id_pagamento = ?";
   $stmt = $conexao->prepare($sql);
   $stmt->bind_param("i", $id);
 
