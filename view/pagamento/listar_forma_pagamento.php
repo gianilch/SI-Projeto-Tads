@@ -35,6 +35,7 @@
             print "<td>" . $row->prazo_parcela . "</td>";
             print "<td>" . $row->juros . "</td>";
             print "<td>";
+            print "<button onclick=\"location.href='?page=editar&id=" . $row->id_pagamento . "';\" class='btn btn-warning'>Editar</button> ";
             print "<button onclick=\"if(confirm('Tem certeza que deseja excluir esta forma de pagamento?'))
                 {location.href='?page=excluir&id=" . $row->id_pagamento . "';}\" class='btn btn-danger'>Excluir</button>";
         }

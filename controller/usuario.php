@@ -45,7 +45,6 @@ switch (@$_REQUEST["page"]) {
         echo "<script>location.href='?page=listar';</script>";
         break;
     default:
-        include("../view/template.php");
         break;
 
 }

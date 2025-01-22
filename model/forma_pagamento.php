@@ -4,9 +4,9 @@ function salvarFormaPagamento($conexao, $nome, $tipo, $aceita_parcelamento, $pra
 {
   if ($id) {
 
-    $sql = "UPDATE forma_pagamento SET nome = ?, email = ? WHERE id = ?";
+    $sql = "UPDATE forma_pagamento SET nome = ?, tipo = ?, aceita_parcelamento = ?, prazo_parcela = ?, juros = ? WHERE id_pagamento = ?";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("ssi", $nome, $tipo, $aceita_parcelamento, $id);
+    $stmt->bind_param("ssiidi", $nome, $tipo, $aceita_parcelamento, $prazo_parcela, $juros, $id);
 
   } else {
     $sql = "INSERT INTO forma_pagamento(nome, tipo, aceita_parcelamento, prazo_parcela, juros) VALUES (?, ?, ?, ?, ?)";
@@ -23,5 +23,15 @@ function excluirFormaPagamento($conexao, $id)
   $stmt->bind_param("i", $id);
 
   return $stmt->execute();
+}
+
+function getFormaPagamento($conexao, $id)
+{
+  $sql = "SELECT * FROM forma_pagamento WHERE id_pagamento = ?";
+  $stmt = $conexao->prepare($sql);
+  $stmt->bind_param('i', $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  return $result->fetch_assoc();
 }
 ?>

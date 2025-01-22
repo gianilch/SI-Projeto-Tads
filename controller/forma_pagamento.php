@@ -27,6 +27,11 @@ switch (@$_REQUEST["page"]) {
     }
     echo "<script>location.href='?page=listar';</script>";
     break;
+  case "editar":
+    $id = intval($_REQUEST['id']);
+    $forma_pagamento = getFormaPagamento($conexao, $id);
+    include("../view/pagamento/editar_forma_pagamento.php");
+    break;
   case "excluir":
     $id = intval($_REQUEST['id']);
     if (excluirFormaPagamento($conexao, $id)) {
@@ -37,7 +42,6 @@ switch (@$_REQUEST["page"]) {
     echo "<script>location.href='?page=listar';</script>";
     break;
   default:
-    include("../view/template.php");
     break;
 
 }

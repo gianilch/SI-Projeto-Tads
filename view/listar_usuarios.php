@@ -29,9 +29,6 @@
             print "<td>" . $row->nome . "</td>";
             print "<td>" . $row->email . "</td>";
             print "<td>";
-
-            print "<button onclick=\"location.href='?page=visualizar&id=" . $row->id . "';\" class='btn btn-info'>Visualizar</button>";
-
             print "<button onclick=\"location.href='?page=visualizar&id=" . $row->id . "';\" class='btn btn-info'>Visualizar</button> ";
             print "<button onclick=\"location.href='?page=editar&id=" . $row->id . "';\" class='btn btn-warning'>Editar</button> ";
             print "<button onclick=\"if(confirm('Tem certeza que deseja excluir este usuário?'))
