@@ -1,24 +1,10 @@
-<?php
-$paymentType = isset($_GET['paymentType']) ? $_GET['paymentType'] : '';
-?>
 <div class="container mt-5">
-    <h2>Formas de Pagamento</h2>
-    <div class="form-check form-check-inline">
-        <a href="?paymentType=pix" class="btn btn-outline-primary <?php if ($paymentType == 'pix') echo 'active'; ?>">
-            PIX
-        </a>
-    </div>
-    <div class="form-check form-check-inline">
-        <a href="?paymentType=cartao" class="btn btn-outline-primary <?php if ($paymentType == 'cartao') echo 'active'; ?>">
-            Cartão
-        </a>
-    </div>
-
-    <?php
-    if ($paymentType == 'pix') {
-        include 'pix.php';
-    } elseif ($paymentType == 'cartao') {
-        include 'cartao.php';
-    }
-    ?>
+    <h2>Pagamento de Pedido</h2>
+    <form action="?page=buscarPedido" method="POST">
+        <div class="input-group mb-3">
+            <input class='form-control' type="number" class="form-control" id="id" name="id"
+                placeholder="Digite o número do pedido.">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
 </div>

@@ -6,10 +6,10 @@ include("../view/template.php");
 
 switch (@$_REQUEST["page"]) {
   case "listar":
-    include("../view/pagamento/listar_forma_pagamento.php");
+    include("../view/cadastro-forma-pagamento/listar_forma_pagamento.php");
     break;
   case "novo":
-    include("../view/pagamento/cadastrar_forma_pagamento.php");
+    include("../view/cadastro-forma-pagamento/cadastrar_forma_pagamento.php");
     break;
   case "salvar":
     $nome = $_POST['nome'];
@@ -30,7 +30,7 @@ switch (@$_REQUEST["page"]) {
   case "editar":
     $id = intval($_REQUEST['id']);
     $forma_pagamento = getFormaPagamento($conexao, $id);
-    include("../view/pagamento/editar_forma_pagamento.php");
+    include("../view/cadastro-forma-pagamento/editar_forma_pagamento.php");
     break;
   case "excluir":
     $id = intval($_REQUEST['id']);
