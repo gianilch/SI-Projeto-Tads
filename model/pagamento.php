@@ -7,6 +7,10 @@ function salvarPagamento($conexao, $id_venda, $quantidade_parcelas, ): mixed
 
     $venda = getPedido($conexao, $id_venda);
 
+    if($venda['aceita_parcelamento' == 0]){
+        $quantidade_parcelas = 1;
+    }
+
     $valor_total_venda = $quantidade_parcelas == 1 ? $venda['valor'] : $venda['valor'] * (1 + $venda['juros'] / 100);
 
     $valor_parcela = $valor_total_venda / $quantidade_parcelas;

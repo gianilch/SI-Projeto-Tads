@@ -1,4 +1,4 @@
-INSERT INTO `cliente`
+INSERT INTO `tads`.`cliente`
             (`id_cliente`,
              `cpf`,
              `nome`,
@@ -22,7 +22,7 @@ VALUES      (NULL,
              '1',
              '1'); 
 
-INSERT INTO `funcionario`
+INSERT INTO `tads`.`funcionario`
             (`id_funcionario`,
              `nome`,
              `email`,
@@ -38,7 +38,7 @@ VALUES      (NULL,
              'Vendedor',
              '5'); 
 
-INSERT INTO `forma_pagamento`
+INSERT INTO `tads`.`forma_pagamento`
             (`id_pagamento`,
              `nome`,
              `tipo`,
@@ -58,7 +58,7 @@ VALUES      (NULL,
              '30',
              '10') 
 
-INSERT INTO `venda`
+INSERT INTO `tads`.`venda`
             (`id_venda`,
              `id_cliente`,
              `id_funcionario`,
@@ -70,4 +70,13 @@ VALUES      ('1',
              '1',
              '2',
              '12000',
-             '2025-01-22'); 
+             '2025-01-22'),
+             (
+             '1',
+             '1',
+             '1',
+             '1',
+             '18000',
+             '2025-01-22'
+             )
+             ; 
