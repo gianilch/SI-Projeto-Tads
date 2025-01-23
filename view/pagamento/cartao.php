@@ -1,6 +1,8 @@
 <div class="container mt-5">
     <h2>Informações do Cartão de Crédito</h2>
     <form action="?page=salvarPagamento" method="POST">
+        <!-- Campo oculto para enviar o ID do usuário -->
+        <input type="hidden" name="idVenda" value="<?php echo $pedido['id_venda']; ?>">
         <div class="form-row">
             <div class="form-group col">
                 <label for="nome">Nome do Titular</label>
@@ -30,31 +32,31 @@
                     <option selected value="1">1 x R$ <?php echo number_format($pedido['valor'], 2, ',', '.'); ?>
                     </option>
                     <option value="2">2 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 2), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 2), 2, ',', '.'); ?>
                     </option>
                     <option value="3">3 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 3), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 3), 2, ',', '.'); ?>
                     </option>
                     <option value="4">4 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 4), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 4), 2, ',', '.'); ?>
                     </option>
                     <option value="5">5 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 5), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 5), 2, ',', '.'); ?>
                     </option>
                     <option value="6">6 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 6), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 6), 2, ',', '.'); ?>
                     </option>
                     <option value="7">7 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 7), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 7), 2, ',', '.'); ?>
                     </option>
                     <option value="8">8 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 8), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 8), 2, ',', '.'); ?>
                     </option>
                     <option value="9">9 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 9), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 9), 2, ',', '.'); ?>
                     </option>
                     <option value="10">10 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros']) / 100 / 10), 2, ',', '.'); ?>
+                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 10), 2, ',', '.'); ?>
                     </option>
                 </select>
             </div>

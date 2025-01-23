@@ -30,7 +30,7 @@ switch (@$_REQUEST["page"]) {
     break;
   case "salvarPagamento":
     $id_venda = $_POST['idVenda'];  
-    $parcelas = $_POST['numeroParcelas'] ;
+    $parcelas = $_POST['numeroParcelas'];
 
     if (salvarPagamento($conexao, $id_venda, $parcelas )) {
       echo "<script>alert('Pagamento salvo com sucesso'); </script>";
