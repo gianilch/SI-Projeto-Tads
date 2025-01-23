@@ -10,9 +10,8 @@ $paymentType = isset($_GET['paymentType']) ? $_GET['paymentType'] : '';
         </a>
     </div>
     <div class="form-check form-check-inline">
-        <a href="?paymentType=cartao"
-            class="btn btn-outline-primary <?php if ($paymentType == 'cartao')
-                echo 'active'; ?>">
+        <a href="?paymentType=cartao" class="btn btn-outline-primary <?php if ($paymentType == 'cartao')
+            echo 'active'; ?>">
             Cartão
         </a>
     </div>
