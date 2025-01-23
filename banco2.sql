@@ -56,7 +56,7 @@ VALUES      (NULL,
              'À Prazo',
              '1',
              '30',
-             '10') 
+             '10');
 
 INSERT INTO `tads`.`venda`
             (`id_venda`,
