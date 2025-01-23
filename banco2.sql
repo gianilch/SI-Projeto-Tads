@@ -59,20 +59,19 @@ VALUES      (NULL,
              '10');
 
 INSERT INTO `tads`.`venda`
-            (`id_venda`,
+            (
              `id_cliente`,
              `id_funcionario`,
              `id_pagamento`,
              `valor`,
              `data`)
-VALUES      ('1',
+VALUES      (
              '1',
              '1',
              '2',
              '12000',
              '2025-01-22'),
              (
-             '1',
              '1',
              '1',
              '1',
