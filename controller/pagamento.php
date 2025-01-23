@@ -19,7 +19,7 @@ switch (@$_REQUEST["page"]) {
     if ($pedido) {
       include("../view/pagamento/informacao_pedido_pagamento.php");
 
-      if ($pedido['nome_metodo_pagamento'] == 'Cartão de Crédito Visa 1x') {
+      if (str_contains($pedido['nome_metodo_pagamento'], 'Cartão de Crédito'))  {
         include("../view/pagamento/cartao.php");
       }
 
