@@ -33,12 +33,12 @@ switch (@$_REQUEST["page"]) {
   case "salvarPagamento":
     $id_venda = $_POST['idVenda'];
     $parcelas = $_POST['numeroParcelas'];
-
+    $metodo_pagamento = $_POST['metodoPagamento'];
     if (!$parcelas) {
       $parcelas = 1;
     }
 
-    if (salvarPagamento($conexao, $id_venda, $parcelas)) {
+    if (salvarPagamento($conexao, $id_venda, $parcelas, $metodo_pagamento)) {
       echo "<script>alert('Pagamento salvo com sucesso'); </script>";
     } else {
       echo "<script>alert('Não foi possível salvar o pagamento'); </script>";

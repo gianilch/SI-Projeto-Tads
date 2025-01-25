@@ -5,6 +5,7 @@
     <form action="?page=salvarPagamento" method="POST">
         <!-- Campo oculto para enviar o ID do usuário -->
         <input type="hidden" name="idVenda" value="<?php echo $pedido['id_venda']; ?>">
+        <input type="hidden" name="metodoPagamento" value="Cartão de crédito">
         <div class="form-row">
             <div class="form-group col">
                 <label for="nome">Nome do Titular</label>

@@ -219,3 +219,14 @@ CREATE TABLE IF NOT EXISTS `projecao` (
   FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`),
   FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`)
 );
+-- Tabela de Log
+CREATE TABLE IF NOT EXISTS `log_pagamento` (
+    `id_log` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id_pagamento` INT NOT NULL,
+    `id_venda` INT NOT NULL,
+    `data_hora` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `metodo_pagamento` VARCHAR(50),
+    `status_pagamento` ENUM('confirmado', 'recusado'),
+    `referencia_hash` VARCHAR(255),
+    `notas` TEXT
+);
