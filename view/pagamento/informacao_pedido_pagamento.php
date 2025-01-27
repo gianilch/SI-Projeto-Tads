@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h2>Informações do Pedido</h2>
-    <form method="POST">
+    <form action="?page=carregarTipoDePagamento" method="POST">
         <div class="form-row">
             <div class="form-group col">
                 <label for="idVenda">Numero Pedido</label>
@@ -31,13 +31,17 @@
             </div>
             <div class="form-group col">
                 <label for="tipoPagamento">Tipo de Pagamento</label>
-                <input type="text" class="form-control" id="tipoPagamento" name="tipoPagamento"
-                    value="<?php echo $pedido['nome_metodo_pagamento']; ?>" readonly>
-            </div>
-            <div class="form-group col">
-                <label for="juros">Juros a.m.</label>
-                <input type="text" class="form-control" id="juros" name="juros"
-                    value="<?php echo number_format($pedido['juros'], 2, ',', '.'); ?> %" readonly>
+                <select onchange="this.form.submit()" class="custom-select mr-sm-2"
+                    aria-label="Selecione o método de pagamento" id="tipoPagamento" name="tipoPagamento">
+                    <?php
+                    include("../model/banco.php");
+                    $res = listarMeiosDePagamentosDisponiveis($conexao);
+                    $qtd = $res->num_rows;
+                    while ($row = $res->fetch_object()) {
+                        echo '<option ' . ($row->id_pagamento == $pedido['id_pagamento'] ? "selected" : "") . ' value="' . $row->id_pagamento . '"> ' . $row->nome . ' -- Juros de: ' . $row->juros . '%' . ' </option>';
+                    }
+                    ?>
+                </select>
             </div>
         </div>
     </form>
