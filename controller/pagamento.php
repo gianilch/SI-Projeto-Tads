@@ -55,8 +55,8 @@ switch (@$_REQUEST["page"]) {
         exit;
       }
 
-      if (empty($cvv_cartao_tratado) || !ctype_digit($cvv_cartao_tratado || strlen($cvv_cartao_tratado != 3))) {
-        echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cvv é inválido. Err:03'); </script>";
+      if (empty($cvv_cartao_tratado) || !ctype_digit($cvv_cartao_tratado) || (strlen($cvv_cartao_tratado) != 3)) {
+        echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cvv é inválido" . strlen($cvv_cartao_tratado) . ". Err:03'); </script>";
         echo "<script>location.href='?';</script>";
         exit;
       }
