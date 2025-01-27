@@ -35,10 +35,31 @@ switch (@$_REQUEST["page"]) {
     $parcelas = $_POST['numeroParcelas'];
     $metodo_pagamento = $_POST['metodoPagamento'];
     $numero_cartao = $_POST['numeroCartao'];
+    $cvv_cartao = $_POST['cvvCartao'];
+    $validadeCartao = $_POST['validadeCartao'];
 
     if ($numero_cartao) {
 
       $numero_cartao_tratado = preg_replace('/\D/', '', $numero_cartao);
+      $cvv_cartao_tratado = preg_replace('/\D/', '', $cvv_cartao);
+      $data_atual = new DateTime();
+      $data_atual->modify('first day of this month');
+      $data_atual->setTime(0, 0, 0);
+      $data_validade_cartao = new DateTime($validadeCartao . "-01");
+      $data_validade_cartao->setTime(0, 0, 0);
+
+
+      if ($data_atual > $data_validade_cartao) {
+        echo "<script>alert('A data de validade do cartão deve ser maior que a data atual Err:04'); </script>";
+        echo "<script>location.href='?';</script>";
+        exit;
+      }
+
+      if (empty($cvv_cartao_tratado) || !ctype_digit($cvv_cartao_tratado || strlen($cvv_cartao_tratado != 3))) {
+        echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cvv é inválido. Err:03'); </script>";
+        echo "<script>location.href='?';</script>";
+        exit;
+      }
 
       if (empty($numero_cartao_tratado) || !ctype_digit($numero_cartao_tratado)) {
         echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cartão " . $numero_cartao . " é inválido. Err:01'); </script>";

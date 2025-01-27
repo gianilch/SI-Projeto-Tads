@@ -26,6 +26,10 @@
                     placeholder="Digite o CVV do Cartão" required>
             </div>
             <div class="form-group col">
+                <label for="cvvCartao">Validade do Cartão</label>
+                <input type="month" class="form-control" id="validadeCartao" name="validadeCartao" required>
+            </div>
+            <div class="form-group col">
                 <label for="numeroParcelas">Numero de Parcelas</label>
                 <select class="custom-select mr-sm-2" aria-label="Selecione as parcelas" id="numeroParcelas"
                     name="numeroParcelas" required>
