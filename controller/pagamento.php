@@ -34,6 +34,43 @@ switch (@$_REQUEST["page"]) {
     $id_venda = $_POST['idVenda'];
     $parcelas = $_POST['numeroParcelas'];
     $metodo_pagamento = $_POST['metodoPagamento'];
+    $numero_cartao = $_POST['numeroCartao'];
+
+    if ($numero_cartao) {
+
+      $numero_cartao_tratado = preg_replace('/\D/', '', $numero_cartao);
+
+      if (empty($numero_cartao_tratado) || !ctype_digit($numero_cartao_tratado)) {
+        echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cartão " . $numero_cartao . " é inválido. Err:01'); </script>";
+        echo "<script>location.href='?';</script>";
+        exit;
+      }
+
+      $soma = 0;
+      $quantidadeDigitos = strlen($numero_cartao_tratado);
+      $paridade = $quantidadeDigitos % 2;
+
+      for ($i = 0; $i < $quantidadeDigitos; $i++) {
+        $digito = (int) $numero_cartao_tratado[$i];
+
+        if ($i % 2 === $paridade) {
+          $digito *= 2;
+          if ($digito > 9) {
+            $digito -= 9;
+          }
+        }
+
+        $soma += $digito;
+      }
+
+      if ($soma % 10 !== 0) {
+        echo "<script>alert('Não foi possível salvar o pagamento, pois o número do cartão é inválido. Err:02'); </script>";
+        echo "<script>location.href='?';</script>";
+        exit;
+      }
+
+    }
+
     if (!$parcelas) {
       $parcelas = 1;
     }

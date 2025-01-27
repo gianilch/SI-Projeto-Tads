@@ -17,7 +17,7 @@
         <div class="form-row">
             <div class="form-group col">
                 <label for="numeroCartao">Numero do Cartão</label>
-                <input type="text" maxlength="16" minlegth="13" class="form-control" id="numeroCartao"
+                <input type="text" maxlength="20" minlegth="13" class="form-control" id="numeroCartao"
                     name="numeroCartao" placeholder="Digite o Numero do Cartão" required>
             </div>
             <div class="form-group col">
