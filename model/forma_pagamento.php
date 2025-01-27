@@ -35,7 +35,8 @@ function getFormaPagamento($conexao, $id)
   return $result->fetch_assoc();
 }
 
-function listarMeiosDePagamentosDisponiveis($conexao): mixed{
+function listarMeiosDePagamentosDisponiveis($conexao): mixed
+{
   $sql = "SELECT * FROM forma_pagamento";
   $res = $conexao->query($sql);
   return $res;

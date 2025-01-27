@@ -9,4 +9,13 @@ function getPedido($conexao, $id)
   return $result->fetch_assoc();
 }
 
+function atualizaMeioPagamento($conexao, $id_venda, $id_forma_pagamento)
+{
+  $sql = "UPDATE venda SET id_pagamento = ? WHERE id_venda = ?";
+  $stmt = $conexao->prepare($sql);
+  $stmt->bind_param('ii', $id_forma_pagamento, $id_venda);
+  $stmt->execute();
+  return;
+}
+
 ?>

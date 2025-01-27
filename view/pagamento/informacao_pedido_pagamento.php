@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h2>Informações do Pedido</h2>
-    <form method="POST">
+    <form action="?page=carregarTipoDePagamento" method="POST">
         <div class="form-row">
             <div class="form-group col">
                 <label for="idVenda">Numero Pedido</label>
@@ -31,15 +31,14 @@
             </div>
             <div class="form-group col">
                 <label for="tipoPagamento">Tipo de Pagamento</label>
-                <select  onchange="doSomething()class="custom-select mr-sm-2" aria-label="Selecione o método de pagamento" id="tipoPagamento"
-                    name="tipoPagamento">
+                <select onchange="this.form.submit()" class="custom-select mr-sm-2"
+                    aria-label="Selecione o método de pagamento" id="tipoPagamento" name="tipoPagamento">
                     <?php
-                    include("../model/forma_pagamento.php");
                     include("../model/banco.php");
                     $res = listarMeiosDePagamentosDisponiveis($conexao);
-                    $qtd = $res->num_rows;                    
+                    $qtd = $res->num_rows;
                     while ($row = $res->fetch_object()) {
-                        echo '<option ' . ($row->id_pagamento == $pedido['id_pagamento'] ? "selected" : "")  . ' value="' . $row->id_pagamento . '"> ' . $row->nome . ' -- Juros de: ' . $row->juros . '%'. ' </option>';
+                        echo '<option ' . ($row->id_pagamento == $pedido['id_pagamento'] ? "selected" : "") . ' value="' . $row->id_pagamento . '"> ' . $row->nome . ' -- Juros de: ' . $row->juros . '%' . ' </option>';
                     }
                     ?>
                 </select>
