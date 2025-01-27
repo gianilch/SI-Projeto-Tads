@@ -29,35 +29,14 @@
                 <label for="numeroParcelas">Numero de Parcelas</label>
                 <select class="custom-select mr-sm-2" aria-label="Selecione as parcelas" id="numeroParcelas"
                     name="numeroParcelas" required>
-                    <option selected value="1">1 x R$ <?php echo number_format($pedido['valor'], 2, ',', '.'); ?>
-                    </option>
-                    <option value="2">2 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 2), 2, ',', '.'); ?>
-                    </option>
-                    <option value="3">3 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 3), 2, ',', '.'); ?>
-                    </option>
-                    <option value="4">4 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 4), 2, ',', '.'); ?>
-                    </option>
-                    <option value="5">5 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 5), 2, ',', '.'); ?>
-                    </option>
-                    <option value="6">6 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 6), 2, ',', '.'); ?>
-                    </option>
-                    <option value="7">7 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 7), 2, ',', '.'); ?>
-                    </option>
-                    <option value="8">8 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 8), 2, ',', '.'); ?>
-                    </option>
-                    <option value="9">9 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 9), 2, ',', '.'); ?>
-                    </option>
-                    <option value="10">10 x R$
-                        <?php echo number_format(($pedido['valor'] * (1 + $pedido['juros'] / 100) / 10), 2, ',', '.'); ?>
-                    </option>
+                    <?php
+                    $row = 1;
+                    $maximo_parcela = $pedido['aceita_parcelamento'] == 1 ? 10 : 1;
+                    while ($row <= $maximo_parcela) {
+                        echo '<option ' . ($row == 1 ? "selected" : "") . ' value="' . $row . '">' . $row . ' x R$ ' . number_format(($pedido['valor'] * (1 + ($row == 1 ? 0 : $pedido['juros']) / 100) / $row), 2, ',', '.') . '
+                    </option>';
+                        $row++;
+                    } ?>
                 </select>
             </div>
         </div>

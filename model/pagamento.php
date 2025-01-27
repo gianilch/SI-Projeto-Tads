@@ -2,12 +2,12 @@
 
 include("../model/pedido.php");
 
-function salvarPagamento($conexao, $id_venda, $quantidade_parcelas, ): mixed
+function salvarPagamento($conexao, $id_venda, $quantidade_parcelas): mixed
 {
 
     $venda = getPedido($conexao, $id_venda);
 
-    if($venda['aceita_parcelamento' == 0]){
+    if ($venda['aceita_parcelamento' == 0]) {
         $quantidade_parcelas = 1;
     }
 

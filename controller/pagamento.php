@@ -38,7 +38,7 @@ switch (@$_REQUEST["page"]) {
       $parcelas = 1;
     }
 
-    if (salvarPagamento($conexao, $id_venda, $parcelas, $metodo_pagamento)) {
+    if (salvarPagamento($conexao, $id_venda, $parcelas)) {
       echo "<script>alert('Pagamento salvo com sucesso'); </script>";
     } else {
       echo "<script>alert('Não foi possível salvar o pagamento'); </script>";
